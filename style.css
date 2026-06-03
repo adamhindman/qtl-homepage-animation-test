@@ -397,22 +397,6 @@ footer {
     color: var(--color-gray-100);
 }
 
-/* ─── Variants ─────────────────────────────────────────────────────────────── */
-.variant {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.variant + .variant {
-    margin-top: 60px;
-}
-.variant-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-secondary);
-}
 
 /* ─── Stat Card Animations ─────────────────────────────────────────────────── */
 .stat-cards > :nth-child(odd):last-child {
@@ -450,98 +434,29 @@ footer {
 .stat-cards-animate-on-load > :nth-child(5) { --stat-card-index: 4; }
 .stat-cards-animate-on-load > :nth-child(n + 6) { --stat-card-index: 5; }
 
-/* ─── Variant A ────────────────────────────────────────────────────────────── */
-#variant-a .stat-cards-animate-on-load > * {
-    will-change: opacity, transform;
-    animation: stat-card-fade-up 250ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+/* ─── Stat Card Animations ─────────────────────────────────────────────────── */
+.stat-cards-animate-on-load > * .stat-card-icon {
+    animation: stat-card-icon-rise 250ms cubic-bezier(0.34, 2.0, 0.64, 1) backwards;
     animation-delay: calc(var(--stat-card-stagger, 80ms) * var(--stat-card-index, 0));
 }
-#variant-a .stat-cards-animate-on-load > * .stat-card-icon {
-    animation: variant-a-rise 250ms cubic-bezier(0.34, 1.6, 0.64, 1) backwards;
-    animation-delay: calc(var(--stat-card-stagger, 80ms) * var(--stat-card-index, 0));
-}
-#variant-a .stat-cards-animate-on-load > * .stat-card-header,
-#variant-a .stat-cards-animate-on-load > * .stat-card-sub-header {
-    animation: variant-a-rise 250ms cubic-bezier(0.34, 1.6, 0.64, 1) backwards;
+.stat-cards-animate-on-load > * .stat-card-header,
+.stat-cards-animate-on-load > * .stat-card-sub-header {
+    animation: stat-card-rise 250ms cubic-bezier(0.34, 2.0, 0.64, 1) backwards;
     animation-delay: calc(var(--stat-card-stagger, 80ms) * var(--stat-card-index, 0) + 50ms);
 }
-
-@keyframes stat-card-fade-up {
-    from { opacity: 0; transform: translateY(100px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes variant-a-rise {
-    from { transform: translateY(20px); }
-    to   { transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #variant-a .stat-cards-animate-on-load > *,
-    #variant-a .stat-cards-animate-on-load > * .stat-card-icon,
-    #variant-a .stat-cards-animate-on-load > * .stat-card-header,
-    #variant-a .stat-cards-animate-on-load > * .stat-card-sub-header {
-        opacity: 1;
-        transform: none;
-        animation: none;
-    }
-}
-
-/* ─── Variant B (commented out) ────────────────────────────────────────────
-#variant-b .stat-cards-animate-on-load > * {
-    animation: none;
-    opacity: 1;
-    transform: none;
-}
-#variant-b .stat-cards-animate-on-load > * > * {
-    animation: variant-b-fade 600ms ease-out backwards;
-    animation-delay: calc(
-        var(--stat-card-stagger, 250ms) * var(--stat-card-index, 0)
-    );
-}
-@keyframes variant-b-fade {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-─── end Variant B ─────────────────────────────────────────────────────── */
-
-/* ─── Variant C ─────────────────────────────────────────────────────────────── */
-#variant-c .stat-card:hover {
-    transform: scale(1.1);
-    z-index: 2;
-    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 1px rgba(0, 0, 0, 0.05);
-}
-#variant-c .stat-cards-animate-on-load > * .stat-card-icon {
-    animation: variant-c-icon-rise 250ms cubic-bezier(0.34, 2.0, 0.64, 1) backwards;
-    animation-delay: calc(var(--stat-card-stagger, 80ms) * var(--stat-card-index, 0));
-}
-#variant-c .stat-cards-animate-on-load > * .stat-card-header,
-#variant-c .stat-cards-animate-on-load > * .stat-card-sub-header {
-    animation: variant-c-rise 250ms cubic-bezier(0.34, 2.0, 0.64, 1) backwards;
-    animation-delay: calc(var(--stat-card-stagger, 80ms) * var(--stat-card-index, 0) + 50ms);
-}
-@keyframes variant-c-icon-rise {
+@keyframes stat-card-icon-rise {
     from { opacity: 0; transform: translateY(35px) scale(0.6); }
     to   { opacity: 1; transform: translateY(0) scale(1.0); }
 }
-@keyframes variant-c-rise {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes stat-card-rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    #variant-c .stat-cards-animate-on-load > * .stat-card-icon,
-    #variant-c .stat-cards-animate-on-load > * .stat-card-header,
-    #variant-c .stat-cards-animate-on-load > * .stat-card-sub-header {
+    .stat-cards-animate-on-load > * .stat-card-icon,
+    .stat-cards-animate-on-load > * .stat-card-header,
+    .stat-cards-animate-on-load > * .stat-card-sub-header {
         animation: none;
         opacity: 1;
         transform: none;
