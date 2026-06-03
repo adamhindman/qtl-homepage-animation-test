@@ -515,13 +515,17 @@ footer {
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 1px rgba(0, 0, 0, 0.05);
 }
 #variant-c .stat-cards-animate-on-load > * .stat-card-icon {
-    animation: variant-c-rise 250ms cubic-bezier(0.34, 1.6, 0.64, 1) backwards;
+    animation: variant-c-icon-rise 250ms cubic-bezier(0.34, 2.0, 0.64, 1) backwards;
     animation-delay: calc(var(--stat-card-stagger, 80ms) * var(--stat-card-index, 0));
 }
 #variant-c .stat-cards-animate-on-load > * .stat-card-header,
 #variant-c .stat-cards-animate-on-load > * .stat-card-sub-header {
-    animation: variant-c-rise 250ms cubic-bezier(0.34, 1.6, 0.64, 1) backwards;
+    animation: variant-c-rise 250ms cubic-bezier(0.34, 2.0, 0.64, 1) backwards;
     animation-delay: calc(var(--stat-card-stagger, 80ms) * var(--stat-card-index, 0) + 50ms);
+}
+@keyframes variant-c-icon-rise {
+    from { opacity: 0; transform: translateY(35px) scale(0.6); }
+    to   { opacity: 1; transform: translateY(0) scale(1.0); }
 }
 @keyframes variant-c-rise {
     from {
